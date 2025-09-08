@@ -9,9 +9,14 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilter = (req,file,cb) => {
-    const allowedTypes = ["image/jpeg","image/jpg","image/png"]
-}
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  if (allowedTypes.includes(file.memetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only .jpeg, .jpg and .png formats are allowed"), false);
+  }
+};
 
 const upload = multer({ storage, fileFilter });
 
