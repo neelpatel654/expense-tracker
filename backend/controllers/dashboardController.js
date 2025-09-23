@@ -9,15 +9,16 @@ exports.getDashboardData = async (req,res) => {
 
         //Fetch total income and expense
         const totalIncome = await Income.aggregate([
-            {$match: {userId,userObjectId}},
+            {$match: {userId:userObjectId}},
             {$group: {_id:null,total:{$sum: "$amount"}}},
         ]);
         console.log("totalIncome", {totalIncome, userId: isValidObjectId(userId)});
         
         const totalExpense = await Expense.aggregate([
-            {$match: {userId,userObjectId}},
+            {$match: {userId:userObjectId}},
             {$group: {_id:null,total:{$sum: "$amount"}}},
         ]);
+        console.log("totalExpense", {totalExpense, userId: isValidObjectId(userId)});
 
         //Get income transaction in last 60 days
         const last60DaysIncomeTransaction = await Income.find({
@@ -32,7 +33,7 @@ exports.getDashboardData = async (req,res) => {
         );
 
          //Get expense transaction in last 60 days
-        const last30DaysExpenseTransaction = await Income.find({
+        const last30DaysExpenseTransaction = await Expense.find({
             userId,
             date: {$gte: new Date(Date.now() - 30*24*60*60*1000)},
         }).sort({date: -1});
