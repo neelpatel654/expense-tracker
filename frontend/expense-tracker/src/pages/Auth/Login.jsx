@@ -3,21 +3,23 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import { useNavigate, Link } from "react-router-dom";
 import Input from "../../components/inputs/Input";
 import { validateEmail } from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
- 
-  const handleLogin = async (e) => {
-    e. preventDefault();
 
-    if(!validateEmail(email)){
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
       setError("Please enter a valid email address");
       return;
     }
-    if(!password){
+    if (!password) {
       setError("Please enter the password");
       return;
     }
@@ -25,6 +27,26 @@ const Login = () => {
     setError("");
 
     //Login API call
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+      });
+      const { token, user } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        navigate("/dashboard")
+      }
+    }
+    catch (e) {
+      if (e.response && e.response.data.message) {
+        setError(e.response.data.message);
+      }
+      else {
+        setError("Something went wrong. Please try again.");
+      }
+    }
   }
   return (
     <AuthLayout>
