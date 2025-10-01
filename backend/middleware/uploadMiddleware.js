@@ -14,11 +14,7 @@ const fileFilter = (req, file, cb) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    // cb(new Error("Only .jpeg, .jpg and .png formats are allowed"), false);
-
-    // Set custom error message in req.fileValidationError
-    req.fileValidationError = "Only .jpeg, .jpg, and .png formats are allowed";
-    cb(null, false); // Don't proceed with the upload
+    cb(new Error("Only .jpeg, .jpg and .png formats are allowed"), false);
   }
 };
 
