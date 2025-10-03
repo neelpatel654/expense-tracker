@@ -11,6 +11,10 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
+app.get("/",(req,res) => {
+  res.send("API is running....");
+});
+
 //Middleware to handle CORS
 app.use(
   cors({

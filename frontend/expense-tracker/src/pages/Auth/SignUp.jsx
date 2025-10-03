@@ -17,7 +17,7 @@ const SignUp = () => {
 
   const [error, setError] = useState(null);
 
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -43,19 +43,23 @@ const SignUp = () => {
 
     //SignUp API call
     try {
-
       // Upload Image if exists
-      if(profilePic){
-        const imgUploadRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadRes.imageUrl || "";
+      if (profilePic) {
+        try {
+          const imgUploadRes = await uploadImage(profilePic);
+          profileImageUrl = imgUploadRes.imageUrl || "";
+        } catch (err) {
+          setError(err.message); // ⬅️ show multer validation error here
+          return; // stop signup if image invalid
+        }
       }
-
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
         fullName,
         email,
         password,
         profileImageUrl,
       });
+
       const { token, user } = response.data;
 
       if (token) {
