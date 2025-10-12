@@ -7,7 +7,7 @@ const Last30DaysExpenses = ({ data }) => {
 
   useEffect(() => {
     const result = prepareExpenseBarChartData(data);
-    setChartData(null);
+    setChartData(result);
 
     return () => {};
   }, [data]);
@@ -17,7 +17,7 @@ const Last30DaysExpenses = ({ data }) => {
         <h5 className="text-lg">Last 30 Days Expense</h5>
       </div>
 
-      <CustomBarChartData data={data} />
+      <CustomBarChartData data={chartData} />
     </div>
   );
 };
