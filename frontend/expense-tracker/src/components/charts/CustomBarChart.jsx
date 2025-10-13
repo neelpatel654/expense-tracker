@@ -11,9 +11,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const CustomBarChartData = ({ data }) => {
+const CustomBarChart = ({ data }) => {
   // function to alternate colors
   const getBarColor = (index) => {
+    console.log("index",index);
+    
     return index % 2 === 0 ? "#875cf5" : "#cfbefb";
   };
 
@@ -57,7 +59,7 @@ const CustomBarChartData = ({ data }) => {
             activeDot={{ r: 8, fill: "yellow" }}
             activeStyle={{ fill: "green" }}
           >
-            {data.map((entry, index) => (
+            {data.map((entry, index) => (  
               <Cell key={index} fill={getBarColor(index)} />
             ))}
           </Bar>
@@ -67,4 +69,4 @@ const CustomBarChartData = ({ data }) => {
   );
 };
 
-export default CustomBarChartData;
+export default CustomBarChart;
