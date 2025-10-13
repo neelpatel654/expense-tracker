@@ -16,8 +16,7 @@ const Last30DaysExpenses = ({ data }) => {
       <div className="flex items-center justify-between">
         <h5 className="text-lg">Last 30 Days Expense</h5>
       </div>
-
-      <CustomBarChart data={chartData} />
+      <CustomBarChart data={chartData} xKey="category" />
     </div>
   );
 };

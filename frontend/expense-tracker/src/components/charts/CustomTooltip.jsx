@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
-    let textColorClass = "text-gray-800"; // Default color
+    let textColorClass = "text-purple-600"; // Default color
 
     switch (payload[0].name) {
       case "Total Balance":
