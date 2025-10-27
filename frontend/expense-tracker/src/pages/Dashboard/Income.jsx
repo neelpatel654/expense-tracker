@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import IncomeOverview from "../../components/income/IncomeOverview";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { useEffect } from "react";
 import Modal from "../../components/Modal";
 import AddIncomeForm from "../../components/income/AddIncomeForm";
 import toast from "react-hot-toast";
@@ -20,7 +19,7 @@ const Income = () => {
     show: false,
     data: null,
   });
-  const [OpenAddIncomeModal, setOpenAddIncomeModal] = useState(false);
+  const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
 
   //Get All Income Details
   const fetchIncomeDetails = async () => {
@@ -124,7 +123,7 @@ const Income = () => {
           />
         </div>
         <Modal
-          isOpen={OpenAddIncomeModal}
+          isOpen={openAddIncomeModal}
           onClose={() => setOpenAddIncomeModal(false)}
           title="Add Income"
         >
