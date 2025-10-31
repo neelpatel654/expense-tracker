@@ -28,6 +28,6 @@ export const SIDE_MENU_DATA = [
         id:"06",
         lable:"Logout",
         icon:LuLogOut,
-        path:"/dashboard"
+        path:"/logout"
     },
 ]

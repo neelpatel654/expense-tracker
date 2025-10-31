@@ -14,7 +14,6 @@ import {
 const CustomBarChart = ({ data, xKey = "category" }) => {
   // function to alternate colors
   const getBarColor = (index) => {
-    console.log("index",index);
     return index % 2 === 0 ? "#875cf5" : "#cfbefb";
   };
 
@@ -58,7 +57,6 @@ const CustomBarChart = ({ data, xKey = "category" }) => {
             activeDot={{ r: 8, fill: "yellow" }}
             activeStyle={{ fill: "green" }}
           >
-            {console.log("data",data)}
             {data.map((entry, index) => (
               <Cell key={index} fill={getBarColor(index)} />
             ))}

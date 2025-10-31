@@ -28,7 +28,6 @@ const ExpenseOverview = ({ transactions, onAddExpense }) => {
         </button>
       </div>
       <div className="mt-10">
-        {console.log("chartData",chartData)}
         <CustomBarChart data={chartData} xKey="category" />
       </div>
     </div>
