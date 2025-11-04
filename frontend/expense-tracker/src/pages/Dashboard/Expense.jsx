@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useUserAuth } from "../../hooks/useUserAuth";
-import DashboardLayout from "../../components/layouts/DashboardLayout";
-import ExpenseOverview from "../../components/expense/ExpenseOverview";
-import ExpenseList from "../../components/expense/ExpenseList";
-import AddExpenseForm from "../../components/expense/AddExpenseForm";
-import Modal from "../../components/Modal";
-import DeleteAlert from "../../components/DeleteAlert";
+import DashboardLayout from "../../component/layouts/DashboardLayout";
+import ExpenseOverview from "../../component/expense/ExpenseOverview";
+import ExpenseList from "../../component/expense/ExpenseList";
+import AddExpenseForm from "../../component/expense/AddExpenseForm";
+import Modal from "../../component/Modal";
+import DeleteAlert from "../../component/DeleteAlert";
 import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
 import toast from "react-hot-toast";

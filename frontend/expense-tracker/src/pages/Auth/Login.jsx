@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import AuthLayout from "../../components/layouts/AuthLayout";
+import AuthLayout from "../../component/layouts/AuthLayout";
 import { useNavigate, Link } from "react-router-dom";
-import Input from "../../components/inputs/Input";
+import Input from "../../component/inputs/Input";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
@@ -93,3 +93,7 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
